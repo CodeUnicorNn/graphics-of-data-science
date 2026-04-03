@@ -62,7 +62,7 @@ class NeuralNetworkFromScratch:
         dw1 = np.dot(x.T, error_hidden)
         db1 = np.sum(error_hidden, axis=0, keepdims=True)
 
-        # 3. Обновление весов (Градиентный спуск)
+        # 3. Обновление весов (градиентный спуск)
         self.w2 -= self.lr * dw2
         self.b2 -= self.lr * db2
         self.w1 -= self.lr * dw1
@@ -72,7 +72,7 @@ class NeuralNetworkFromScratch:
         self.weight_history.append(self.w1.copy().flatten())
 
 
-# --- Подготовка данных (Эмуляция макропоказателей) ---
+# --- Подготовка данных (эмуляция макропоказателей) ---
 # Испульзуем 'make_moons' для создания сложной нелинейной границы
 X, y = make_moons(n_samples=500, noise=0.2, random_state=42)
 y = y.reshape(-1, 1)  # Преобразуем в вектор-столбец
@@ -100,7 +100,7 @@ for epoch in range(epochs):
 print("[SUCCESS] Training complete.")
 
 
-# --- Визуализация 1: Граница принятия решений (Decision Boundary) ---
+# --- Визуализация 1: граница принятия решений (decision boundary) ---
 def plot_decision_boundary(X, y, model, filename):
     x_min, x_max = X[:, 0].min() - 0.5, X[:, 0].max() + 0.5
     y_min, y_max = X[:, 1].min() - 0.5, X[:, 1].max() + 0.5
@@ -121,7 +121,7 @@ def plot_decision_boundary(X, y, model, filename):
 plot_decision_boundary(X, y, nn, "decision_boundary_final.png")
 print("[-] Decision boundary saved as: decision_boundary_final.png")
 
-# --- Визуализация 2: Гистограмма весов ---
+# --- Визуализация 2: гистограмма весов ---
 plt.figure(figsize=(10, 6))
 plt.hist(nn.w1.flatten(), bins=30, alpha=0.7, color='#2c3e50', edgecolor='black')
 plt.title("Weight distribution (hidden layer w1) after training")
